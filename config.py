@@ -1,14 +1,13 @@
-# Telegram API credentials
-API_ID = "12463733"
-API_HASH = "2456e376e82f580ea1xxxxd9d6444df8f"
-BOT_TOKEN = "791439946:AAEM24pSBCjBneq8C8u9UZxxxxFUYQn8HRw"
+import os
+import dotenv
 
-# MongoDB credentials
-DB_URI = "mongodb+srv://"
-DB_NAME = "Giveaways"
-
-# Admin IDs: space-separated values, e.g., "123456789 987654321"
-ADMIN_IDS = "1234567"
-
-# Convert ADMIN_IDS string to a list of integers
-ADMIN_IDS = [int(admin_id) for admin_id in ADMIN_IDS.split()]
+if os.path.exists("vars.env"):
+    load_dotenv("vars.env")
+else:
+    load_dotenv()  
+API_ID = os.getenv("API_ID")
+API_HASH = os.getenv("API_HASH")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+DB_URI = os.getenv("DB_URI")
+DB_NAME = os.getenv("DB_NAME")
+ADMIN_IDS = [int(admin_id) for admin_id in os.getenv("ADMIN_IDS", "").split()]
