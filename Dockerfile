@@ -5,4 +5,4 @@ COPY . /GiveAwayBot
 WORKDIR /GiveAwayBot
 RUN chmod 777 /GiveAwayBot
 RUN pip3 install --no-cache-dir -U -r requirements.txt
-RUN python3 main.py
+RUN gunicorn app:app & python3 main.py
